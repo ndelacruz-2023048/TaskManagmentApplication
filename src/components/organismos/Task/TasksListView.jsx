@@ -1,6 +1,8 @@
 import { Icon } from '@iconify/react/dist/iconify.js'
 import React from 'react'
 import styled from 'styled-components'
+import { TaskStatusDraggable } from './TaskStatusDraggable'
+
 
 export const TasksListView = () => {
   return (
@@ -16,7 +18,9 @@ export const TasksListView = () => {
             </div>
         </section>
         <section className='tasksectionlist'>
-
+            <TaskStatusDraggable titleStatusTask="To Do" colorTask="#2b8ae4"/>
+            <TaskStatusDraggable titleStatusTask="On Progress" colorTask="#c52be4"/>
+            <TaskStatusDraggable titleStatusTask="Neew Review" colorTask="#cfc312"/>
         </section>
     </Container>
   )
@@ -29,7 +33,7 @@ const Container = styled.div`
   .tasktoolbar{
       display: flex;
       gap: 10px;
-      height: 6%;
+      height: 10%;
     &_opt{
         display: flex;
         align-items: center;
@@ -39,7 +43,7 @@ const Container = styled.div`
             &::after{
                 position: absolute;
                 content: '';
-                bottom: 0;
+                bottom: 9%;
                 right: 0;
                 width: 100%;
                 height: 2px;
@@ -67,5 +71,11 @@ const Container = styled.div`
         font-size: 22px;
         font-weight: 600;
     }
+  }
+  .tasksectionlist{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 100%;
   }
 `

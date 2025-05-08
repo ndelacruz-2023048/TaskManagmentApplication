@@ -3,14 +3,20 @@ import { Breadcrumb } from '../organismos/Task/Breadcrumb'
 import styled from 'styled-components'
 import { Icon } from '@iconify/react/dist/iconify.js'
 import { TasksListView } from '../organismos/Task/TasksListView'
+import { useTaskStore } from '../../store/TaskStore'
+import { TaskForm } from '../organismos/Forms/TaskForm'
 
 export const TasksTemplate = () => {
+
+  const {isFormTaskOpen,setIsFormTaskOpen} = useTaskStore()
+
   return (
     <Container>
+      {isFormTaskOpen && <TaskForm/>}
       <Breadcrumb/>
       <section className='titletasklist'>
         <h1 className='titletasklist_title'>List Tasks</h1>
-        <button className='buttonTask'> <Icon icon="iconoir:plus" className='buttonTask_icon'/> <span className='buttonTask_text'>Add task</span></button>
+        <button className='buttonTask'> <Icon icon="iconoir:plus" className='buttonTask_icon'/> <span className='buttonTask_text' onClick={setIsFormTaskOpen}>Add task</span></button>
       </section>
       <TasksListView/>
     </Container>
@@ -46,5 +52,6 @@ const Container = styled.div`
       font-size: 25px;
     }
   }
+
 `
 
